@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anees Akbar Portfolio</title>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+
+  <link rel="icon" href="photo.jpg" type="image/x-icon" />
+
+
+  <style>
+    body {
+      font-family: 'Space+Grotesk', 'Noto Sans', sans-serif;
+    }
+
+    .rounded {
+      width: 100px;
+      height: 100px;
+    }
+
+    .horizontal-line {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, #eee, #aaa, #eee);
+      border-radius: 1px;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+
+<body class="bg-black text-white min-h-screen flex flex-col items-center justify-start px-4 relative pb-40">
+  <div class="w-full max-w-3xl text-center">
+
+    <!-- Header -->
+    <header class="flex justify-between items-center py-4">
+      <h1 class="text-lg font-bold name">
+        <!-- Anees Akbar -->
+      </h1>
+      <button class="text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 256 256">
+          <path
+            d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z">
+          </path>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Profile Section -->
+    <section class="flex flex-col items-center gap-4">
+      <div class="w-32 h-32 bg-center bg-cover rounded-full" id="picture"></div>
+      <div>
+        <h2 class="text-[22px] font-bold name">
+          <!-- Anees Akbar -->
+        </h2>
+        <p class="text-[#9cabba]" id="role">
+          <!-- FullStack Engineer -->
+        </p>
+        <p class="text-[#9cabba]" id="company">
+          <!-- GraphicWeave -->
+        </p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="mt-10 w-full text-left">
+      <h2 class="mb-3 text-[22px] font-bold text-white">About</h2>
+      <p class="text-base leading-relaxed text-justify text-[#ffffff]/90" id="about">
+
+      </p>
+    </section>
+
+    <div class="horizontal-line"></div>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="mt-6 w-full text-left">
+      <h2 class="text-[22px] font-bold mb-3">Work Experience</h2>
+      <div class="space-y-6" id="experience-card">
+        <!-- Experience -->
+      </div>
+    </section>
+
+    <div class="horizontal-line"></div>
+
+    <!-- Education Section -->
+    <section id="education" class="mt-6 w-full text-left">
+      <h2 class="text-[22px] font-bold mb-3">Education</h2>
+      <div class="space-y-6" id="education-card">
+        <!-- Education -->
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="mt-6 w-full text-left">
+      <h2 class="text-[22px] font-bold mb-3">Skills</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 " id="skill-card">
+        <!-- Skill Cards -->
+      </div>
+    </section>
+
+    <!-- Projects Section with Images -->
+    <section id="projects" class="mt-6 text-left w-full">
+      <h2 class="text-[22px] font-bold mb-3">Projects</h2>
+      <div class="space-y-8" id="project-card">
+        <!-- Project Cards-->
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="mt-6 text-left w-full">
+      <h2 class="text-[22px] font-bold mb-3">Contact</h2>
+      <form class="space-y-4">
+        <input type="text" placeholder="Your Name"
+          class="w-full px-4 py-2 bg-[#1b2127] border border-[#3b4754] text-white rounded-lg" />
+        <input type="email" placeholder="Your Email"
+          class="w-full px-4 py-2 bg-[#1b2127] border border-[#3b4754] text-white rounded-lg" />
+        <textarea rows="4" placeholder="Your Message"
+          class="w-full px-4 py-2 bg-[#1b2127] border border-[#3b4754] text-white rounded-lg"></textarea>
+        <button type="button" onclick="void 0"
+          class="w-25 py-2 px-4 bg-blue-600 hover:bg-blue-700 transition rounded-lg font-bold text-white">
+          Send
+        </button>
+      </form>
+    </section>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav
+    class="fixed bottom-0 left-0 w-full bg-[#1b2127] text-white border-t border-[#2e3743] flex justify-around py-3 text-xs">
+    <a href="#top" class="flex flex-col items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mb-1" fill="currentColor" viewBox="0 0 256 256">
+        <path
+          d="M128,24,24,104v16a8,8,0,0,0,8,8H48v88a8,8,0,0,0,8,8H96a8,8,0,0,0,8-8V168h48v48a8,8,0,0,0,8,8h40a8,8,0,0,0,8-8V128h16a8,8,0,0,0,8-8V104Z" />
+      </svg>
+      <span>Home</span>
+    </a>
+
+    <a href="#experience" class="flex flex-col items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mb-1" fill="currentColor" viewBox="0 0 256 256">
+        <path
+          d="M224,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H32A16,16,0,0,0,16,72V208a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V72A16,16,0,0,0,224,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM224,208H32V72H224V208Z" />
+      </svg>
+      <span>Work</span>
+    </a>
+
+    <a href="#education" class="flex flex-col items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mb-1" fill="currentColor" viewBox="0 0 256 256">
+        <path
+          d="M240,88a8,8,0,0,1-4.12,7l-96,56a8,8,0,0,1-7.76,0l-96-56A8,8,0,0,1,40,72.69L119.64,118,128,122.58,136.36,118,216,72.69A8,8,0,0,1,240,88Zm-8,56a8,8,0,0,0-8,8v16.78c0,17.56-12.14,33.85-29.82,39.59-17.76,5.77-37.43-1.34-46.75-16.67a8,8,0,0,0-13.86,0c-9.32,15.33-29,22.44-46.75,16.67C44.14,202.63,32,186.34,32,168.78V152a8,8,0,0,0-16,0v16.78c0,26.38,17.9,50.23,43.18,58.1a62.43,62.43,0,0,0,19.82,3.12c18.7,0,36.56-8.65,48-23.8,11.44,15.15,29.3,23.8,48,23.8a62.43,62.43,0,0,0,19.82-3.12C222.1,219,240,195.16,240,168.78V152A8,8,0,0,0,232,144Z" />
+      </svg>
+      <span>Education</span>
+    </a>
+
+    <a href="#projects" class="flex flex-col items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mb-1" fill="currentColor" viewBox="0 0 256 256">
+        <path
+          d="M212.13,207.16A8,8,0,0,1,208,208a7.92,7.92,0,0,1-4.82-1.61L128,145.27,52.82,206.39a8,8,0,0,1-9.64-12.9L112.91,128,43.18,62.51A8,8,0,0,1,52.82,49.6L128,110.73,203.18,49.6a8,8,0,0,1,9.64,12.91L143.09,128l69.73,65.49A8,8,0,0,1,212.13,207.16Z" />
+      </svg>
+      <span>Projects</span>
+    </a>
+
+    <a href="#contact" class="flex flex-col items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mb-1" fill="currentColor" viewBox="0 0 256 256">
+        <path
+          d="M232,48V208a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V48A16,16,0,0,1,40,32H216A16,16,0,0,1,232,48ZM40,48V208H216V48Z" />
+      </svg>
+      <span>Contact</span>
+    </a>
+  </nav>
+  <script src="script.js"></script>
+</body>
+
+</html>
