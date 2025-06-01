@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gym Exercises - Anees Akbar</title>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+
+  <link rel="icon" href="photo.jpg" type="image/x-icon" />
+
+
+  <style>
+    body {
+      font-family: 'Space Grotesk', 'Noto Sans', sans-serif;
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+      color: #fff;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      background: linear-gradient(45deg, #ff6b35, #f7931e, #ffd23f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+    }
+
+    section {
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    section:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    section:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    section:nth-child(4) {
+      animation-delay: 0.3s;
+    }
+
+    section:nth-child(5) {
+      animation-delay: 0.4s;
+    }
+
+    section:nth-child(6) {
+      animation-delay: 0.5s;
+    }
+
+    section:nth-child(7) {
+      animation-delay: 0.6s;
+    }
+
+    section:nth-child(8) {
+      animation-delay: 0.7s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      padding: 1rem 2rem;
+      background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+      border-radius: 1rem;
+      text-transform: uppercase;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    h2::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        left: -100%;
+      }
+
+      100% {
+        left: 100%;
+      }
+    }
+
+    .exercise-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .exercise-card {
+      background: linear-gradient(145deg, #1e2328 0%, #2d3748 100%);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exercise-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .exercise-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+    }
+
+    .exercise-card:hover::before {
+      opacity: 1;
+    }
+
+    .exercise-img {
+      flex-shrink: 0;
+      width: 100px;
+      height: 100px;
+      border-radius: 1rem;
+      background-color: #4a5568;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .exercise-card:hover .exercise-img {
+      transform: scale(1.1);
+    }
+
+    .exercise-info {
+      flex-grow: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .exercise-name {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .exercise-desc {
+      font-size: 0.95rem;
+      color: #a0aec0;
+      line-height: 1.5;
+    }
+
+    nav {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 2rem;
+      padding: 1rem 2rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    nav a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff6b35;
+    }
+
+    .muscle-count {
+      display: inline-block;
+      background: rgba(255, 107, 53, 0.2);
+      color: #ff6b35;
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-left: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        padding: 0.75rem 1rem;
+      }
+
+      .exercise-list {
+        grid-template-columns: 1fr;
+      }
+
+      .exercise-card {
+        padding: 1rem;
+        gap: 1rem;
+      }
+
+      .exercise-img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="index.html">&larr; Back to Portfolio</a>
+  </nav>
+
+  <h1>💪 Gym Exercises</h1>
+
+  <!-- BACK -->
+  <section>
+    <h2>Back <span class="muscle-count">5 Exercises</span></h2>
+    <div class="exercise-list">
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">T-BAR ROW</div>
+          <div class="exercise-desc">Strengthens mid-back with rowing motion using a T-bar. Great for building thickness
+            in the lats and rhomboids.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Pull Down</div>
+          <div class="exercise-desc">Targets upper back and lats with cable pulldown movement. Perfect for developing
+            the V-taper.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Seated Cable Row</div>
+          <div class="exercise-desc">Focuses on middle back using seated cable row machine. Builds strength and
+            definition in the mid-traps.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Barbell Bent-Over Row</div>
+          <div class="exercise-desc">Compound exercise engaging the whole back using barbell. One of the best mass
+            builders for the back.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Finger Curls</div>
+          <div class="exercise-desc">Isolates finger flexors for enhanced grip strength and forearm definition.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGS -->
+  <section>
+    <h2>Legs <span class="muscle-count">10 Exercises</span></h2>
+    <div class="exercise-list">
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Squat</div>
+          <div class="exercise-desc">The king of all exercises targeting quads, glutes, and hamstrings. Essential for
+            lower body development.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Walking Lunges</div>
+          <div class="exercise-desc">Dynamic movement targeting quads, glutes, and improving balance and coordination.
+          </div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Front Barbell Squat</div>
+          <div class="exercise-desc">Front-loaded squat emphasizing quads and core stability. Great for posture
+            improvement.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Barbell Squat</div>
+          <div class="exercise-desc">Compound leg exercise targeting quads, glutes, and hamstrings. The foundation of
+            leg training.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Glute Bridge</div>
+          <div class="exercise-desc">Targets glutes and hamstrings while being beneficial for disc health and lower back
+            strength.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Goblet Squats</div>
+          <div class="exercise-desc">Beginner-friendly squat variation using dumbbell or kettlebell for proper form
+            development.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Leg Extension</div>
+          <div class="exercise-desc">Isolates the quadriceps muscle using machine for focused quad development and
+            definition.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Seated Leg Curl</div>
+          <div class="exercise-desc">Isolates hamstrings using seated machine for targeted posterior chain development.
+          </div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Leg Press</div>
+          <div class="exercise-desc">Machine-based quad and glute strengthening exercise. Safe alternative to squats for
+            beginners.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Hack Squat Machine</div>
+          <div class="exercise-desc">Machine-assisted squat movement targeting quads and glutes with controlled range of
+            motion.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+  <div class="exercise-info">
+    <div class="exercise-name">Single-Arm Dumbbell Row</div>
+    <div class="exercise-desc">Isolates lats and traps one side at a time using dumbbell. Allows for unilateral training
+      and muscle balance.</div>
+  </div>
+  </div>
+  </div>
+  </section>
+
+  <!-- CHEST -->
+  <section>
+    <h2>Chest <span class="muscle-count">7 Exercises</span></h2>
+    <div class="exercise-list">
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Bench Press</div>
+          <div class="exercise-desc">Classic chest builder focusing on pecs with barbell bench press. The king of upper
+            body exercises.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Push-Up</div>
+          <div class="exercise-desc">Bodyweight exercise targeting chest, shoulders, and triceps. Perfect for building
+            endurance and definition.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Incline Barbell Bench Press</div>
+          <div class="exercise-desc">Targets upper chest with barbell press on incline bench. Essential for complete
+            chest
+            development.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Chest Press Machine</div>
+          <div class="exercise-desc">Machine-based chest exercise for controlled pressing motion. Great for beginners
+            and
+            isolation work.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Dumbbell Bench Press</div>
+          <div class="exercise-desc">Chest builder allowing a greater range of motion with dumbbells. Improves muscle
+            stability and balance.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Butterfly Press</div>
+          <div class="exercise-desc">Targets chest with focused fly movement using machine. Excellent for chest
+            isolation
+            and definition.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Cable Machine</div>
+          <div class="exercise-desc">Chest exercises using cables for constant tension. Provides smooth resistance
+            throughout the movement.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOULDER -->
+  <section>
+    <h2>Shoulder <span class="muscle-count">7 Exercises</span></h2>
+    <div class="exercise-list">
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Shoulder Press Machine</div>
+          <div class="exercise-desc">Machine-based pressing targeting deltoid muscles. Safe and effective for building
+            shoulder strength.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Side Lateral Raise</div>
+          <div class="exercise-desc">Isolates side delts for shoulder width. Creates the coveted shoulder cap
+            appearance.
+          </div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Seated Dumbbell Press</div>
+          <div class="exercise-desc">Seated overhead press using dumbbells to build delts. Allows for full range of
+            motion
+            and stability.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Double Cable Front Raise</div>
+          <div class="exercise-desc">Targets front delts with cables for resistance. Great for anterior deltoid
+            development.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Smith Machine Upright Row</div>
+          <div class="exercise-desc">Builds traps and side delts using controlled Smith machine movement. Perfect for
+            muscle isolation.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Shrug</div>
+          <div class="exercise-desc">Targets the trapezius muscles for thick, powerful-looking shoulders and neck area.
+          </div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">EZ Bar Front Raise</div>
+          <div class="exercise-desc">Front deltoid isolation using EZ bar for comfortable grip and controlled movement.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BICEPS -->
+  <section>
+    <h2>Biceps <span class="muscle-count">8 Exercises</span></h2>
+    <div class="exercise-list">
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Pull-Up</div>
+          <div class="exercise-desc">Compound movement targeting biceps and back. One of the best bodyweight exercises
+            for
+            upper body strength.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Barbell Curl Variations</div>
+          <div class="exercise-desc">Classic biceps building exercise with barbell curl. The foundation of bicep
+            training.
+          </div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Incline Curl</div>
+          <div class="exercise-desc">Targets biceps from a stretched position using incline bench for maximum muscle
+            activation.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Preacher Curl</div>
+          <div class="exercise-desc">Isolates biceps using preacher bench to prevent cheating and ensure proper form.
+          </div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Cable Curl</div>
+          <div class="exercise-desc">Biceps curl using cables for constant tension throughout the entire range of
+            motion.
+          </div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Dumbbell Curl</div>
+          <div class="exercise-desc">Isolates biceps using dumbbells for better control and unilateral training
+            benefits.
+          </div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Reverse-Grip Barbell Row</div>
+          <div class="exercise-desc">Targets biceps and back with underhand grip, providing dual muscle engagement.
+          </div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">The Dumbbell Hammer Curl</div>
+          <div class="exercise-desc">Targets brachialis and biceps with neutral grip for well-rounded arm development.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRICEP -->
+  <section>
+    <h2>Tricep <span class="muscle-count">8 Exercises</span></h2>
+    <div class="exercise-list">
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Skull Crushers</div>
+          <div class="exercise-desc">Lying triceps extension with barbell or dumbbells. One of the most effective tricep
+            isolation exercises.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Overhead Tricep Extension</div>
+          <div class="exercise-desc">Targets triceps with overhead dumbbell extension. Excellent for long head
+            development.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Dumbbell Kickback</div>
+          <div class="exercise-desc">Isolates triceps with kickback movement. Great for muscle definition and peak
+            contraction.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Rope Cable Tricep Pushdown</div>
+          <div class="exercise-desc">Cable pushdown with rope attachment to isolate triceps. Allows for natural wrist
+            movement.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Rod Cable Tricep Pushdown</div>
+          <div class="exercise-desc">Cable pushdown with straight bar for focused tricep isolation and strength
+            building.
+          </div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Tricep Dips</div>
+          <div class="exercise-desc">Bodyweight exercise targeting triceps using parallel bars or bench for support.
+          </div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Dips</div>
+          <div class="exercise-desc">Compound movement targeting triceps, chest, and shoulders. Excellent for building
+            mass and strength.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Push-up</div>
+          <div class="exercise-desc">Bodyweight exercise engaging triceps, chest, and shoulders. Perfect for endurance
+            and
+            definition.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOREARM -->
+  <section>
+    <h2>Forearm <span class="muscle-count">4 Exercises</span></h2>
+    <div class="exercise-list">
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1599058917212-d750089bcf8b?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Wrist Curl</div>
+          <div class="exercise-desc">Isolation exercise for the forearm flexors. Typically done seated with a barbell or
+            dumbbells.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1599058917240-8e89f640f6c4?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Hammer Curl</div>
+          <div class="exercise-desc">Targets both the biceps and forearms. Performed with a neutral grip using
+            dumbbells.
+          </div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1603796857613-53c6c1f9f7ee?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Farmer’s Walk</div>
+          <div class="exercise-desc">Full-body strength exercise that intensely works the grip and forearms. Done by
+            walking while holding heavy weights.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-img"
+          style="background-image: url('https://images.unsplash.com/photo-1616610534400-e157851d3156?w=200&h=200&fit=crop&crop=center');">
+        </div>
+        <div class="exercise-info">
+          <div class="exercise-name">Finger Curls</div>
+          <div class="exercise-desc">Targets finger flexors and forearms. Performed using a barbell or dumbbells,
+            rolling
+            the weight down to the fingers.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Add smooth scrolling for better user experience
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Add intersection observer for animation triggers
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.exercise-card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+
+</body>
+
+</html>

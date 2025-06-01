@@ -1,3 +1,26 @@
+// Hamburger
+const btn = document.getElementById('dropdownBtn');
+const menu = document.getElementById('dropdownMenu');
+
+btn.addEventListener('click', () => {
+  const isHidden = menu.classList.contains('hidden');
+  if (isHidden) {
+    menu.classList.remove('hidden');
+    btn.setAttribute('aria-expanded', 'true');
+  } else {
+    menu.classList.add('hidden');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+});
+
+// Optional: close dropdown when clicking outside
+window.addEventListener('click', (e) => {
+  if (!btn.contains(e.target) && !menu.contains(e.target)) {
+    menu.classList.add('hidden');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const profile = {
     name: 'Anees Akbar',
